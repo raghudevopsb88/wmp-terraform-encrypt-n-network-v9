@@ -70,6 +70,7 @@ resource "aws_iam_role_policy_attachment" "main-AmazonEC2ContainerRegistryReadOn
 resource "aws_launch_template" "main" {
   name = "${aws_eks_cluster.main.name}-lt"
   block_device_mappings {
+    device_name = "/dev/xvda"
     ebs {
       kms_key_id = var.kms_key_id
     }
