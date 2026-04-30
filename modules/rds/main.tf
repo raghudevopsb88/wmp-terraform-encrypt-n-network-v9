@@ -58,6 +58,7 @@ resource "aws_db_instance" "main" {
   db_subnet_group_name   = aws_db_subnet_group.main.name
   vpc_security_group_ids = [aws_security_group.main.id]
   kms_key_id             = var.kms_key_id
+  storage_encrypted      = true
 }
 
 resource "null_resource" "schema_load" {
