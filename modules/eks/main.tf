@@ -83,6 +83,10 @@ resource "aws_eks_node_group" "main" {
   subnet_ids      = var.subnets
   instance_types  = ["t3.xlarge"]
   capacity_type   = "SPOT"
+  launch_template {
+    version = "$Latest"
+    name    = "${aws_eks_cluster.main.name}-lt"
+  }
 
 
   scaling_config {
