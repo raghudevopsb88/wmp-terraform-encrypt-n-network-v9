@@ -15,6 +15,7 @@ module "eks" {
 
   env        = var.env
   subnets    = var.subnets
+  kms_key_id = var.kms_key_id
 
 }
 

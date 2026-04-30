@@ -67,6 +67,15 @@ resource "aws_iam_role_policy_attachment" "main-AmazonEC2ContainerRegistryReadOn
   role       = aws_iam_role.node.name
 }
 
+resource "aws_launch_template" "main" {
+  name = "${aws_eks_cluster.main.name}-lt"
+  block_device_mappings {
+    ebs {
+      kms_key_id = var.kms_key_id
+    }
+  }
+}
+
 resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = "${var.env}-ng"
