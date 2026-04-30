@@ -4,6 +4,7 @@ module "databases" {
 
   env        = var.env
   subnet_ids = var.subnets
+  kms_key_id = var.kms_key_id
 
   allocated_storage = each.value["allocated_storage"]
 }
