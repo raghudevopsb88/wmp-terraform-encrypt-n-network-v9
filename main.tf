@@ -12,14 +12,14 @@ module "databases" {
 }
 
 
-# module "eks" {
-#   source = "./modules/eks"
-#
-#   env        = var.env
-#   subnets    = var.subnets
-#   kms_key_id = var.kms_key_id
-#
-# }
+module "eks" {
+  source = "./modules/eks"
+
+  env        = var.env
+  kms_key_id = var.kms_key_id
+
+  subnets = module.network["dev"].subnet_ids
+}
 
 module "network" {
   for_each = var.network
