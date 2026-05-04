@@ -5,7 +5,10 @@ resource "aws_eks_cluster" "main" {
   version  = "1.35"
 
   vpc_config {
-    subnet_ids = var.subnets
+    subnet_ids              = var.subnets
+    endpoint_private_access = true
+    endpoint_public_access  = false
+
   }
 
   depends_on = [
