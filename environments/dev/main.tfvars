@@ -90,5 +90,7 @@ network = {
   }
 }
 
-default_vpc_id = "vpc-00c17ee82b9c30e4a"
+default_vpc_id    = "vpc-00c17ee82b9c30e4a"
+default_vpc_rt_id = "rtb-0448dc4ab58628ec1"
+default_vpc_cidr  = "172.31.0.0/16"
 
