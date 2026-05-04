@@ -90,3 +90,5 @@ network = {
   }
 }
 
+default_vpc_id = "vpc-00c17ee82b9c30e4a"
+
