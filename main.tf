@@ -3,10 +3,12 @@ module "databases" {
   source   = "./modules/rds"
 
   env        = var.env
-  subnet_ids = module.network["dev"].subnet_ids
   kms_key_id = var.kms_key_id
 
   allocated_storage = each.value["allocated_storage"]
+
+  subnet_ids = module.network["dev"].subnet_ids
+  vpc_id     = module.network["dev"].vpc_id
 }
 
 
