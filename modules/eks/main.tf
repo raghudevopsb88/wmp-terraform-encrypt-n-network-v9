@@ -101,6 +101,7 @@ resource "aws_eks_node_group" "main" {
     aws_iam_role_policy_attachment.main-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.main-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.main-AmazonEC2ContainerRegistryReadOnly,
+    aws_launch_template.main
   ]
 }
 
