@@ -15,7 +15,7 @@ resource "aws_eks_cluster" "main" {
   ]
 }
 
-resource "aws_vpc_security_group_ingress_rule" "example" {
+resource "aws_vpc_security_group_ingress_rule" "add-https-to-bastion" {
   security_group_id = aws_eks_cluster.main.vpc_config[0].cluster_security_group_id
   cidr_ipv4         = "172.31.0.0/16"
   from_port         = 443
