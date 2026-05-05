@@ -39,13 +39,13 @@ resource "aws_internet_gateway" "igw" {
     Name = var.env
   }
 }
-#
-# resource "aws_route" "igw-route" {
-#   count = length(local.subnets_with_igw)
-#   route_table_id            =
-#   destination_cidr_block    = "10.0.1.0/22"
-#   vpc_peering_connection_id = "pcx-45ff3dc1"
-# }
+
+resource "aws_route" "igw-route" {
+  for_each               = local.subnets_with_igw
+  route_table_id         = each.value
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.igw.id
+}
 
 #
 # resource "aws_vpc_peering_connection" "main" {
