@@ -40,6 +40,8 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
+
+
 #
 # resource "aws_vpc_peering_connection" "main" {
 #   peer_vpc_id = var.default_vpc_id
