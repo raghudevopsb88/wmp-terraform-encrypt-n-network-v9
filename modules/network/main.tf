@@ -48,7 +48,7 @@ resource "aws_route" "igw-route" {
 }
 
 resource "aws_eip" "ngw" {
-  for_each = local.subnets_with_igw
+  for_each = local.subnets_with_ngw
   domain   = "vpc"
 }
 
