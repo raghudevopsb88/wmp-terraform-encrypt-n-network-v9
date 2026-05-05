@@ -7,6 +7,6 @@ output "vpc_id" {
 }
 
 output "subnets_merged" {
-  value = local.subnets_merged
+  value = local.subnets_with_igw
 }
 
