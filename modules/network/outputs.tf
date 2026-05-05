@@ -6,8 +6,8 @@ output "vpc_id" {
   value = aws_vpc.main
 }
 
-output "subnets_merged" {
-  value = local.subnets_merged
+output "subnets_with_igw" {
+  value = local.subnets_with_igw
 }
 
 
