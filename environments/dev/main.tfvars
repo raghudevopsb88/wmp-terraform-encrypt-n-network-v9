@@ -103,13 +103,13 @@ network = {
         ngw  = false
       }
       app-subnet1 = {
-        cidr = "10.1.0.0/27"
+        cidr = "10.1.0.128/26"
         az   = "us-east-1a"
         igw  = false
         ngw  = true
       }
       app-subnet2 = {
-        cidr = "10.1.0.32/27"
+        cidr = "10.1.0.192/26"
         az   = "us-east-1b"
         igw  = false
         ngw  = true
