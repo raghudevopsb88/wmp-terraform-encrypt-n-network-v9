@@ -16,6 +16,15 @@ resource "aws_subnet" "main" {
     Name = each.key
   }
 }
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = var.env
+  }
+}
+
 #
 # resource "aws_vpc_peering_connection" "main" {
 #   peer_vpc_id = var.default_vpc_id
