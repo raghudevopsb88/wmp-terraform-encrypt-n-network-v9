@@ -40,14 +40,19 @@ module "subnets" {
 #   subnet_id      = aws_subnet.main[each.key].id
 #   route_table_id = aws_route_table.main[each.key].id
 # }
-#
-# resource "aws_internet_gateway" "igw" {
-#   vpc_id = aws_vpc.main.id
-#
-#   tags = {
-#     Name = var.env
-#   }
-# }
+
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = var.env
+  }
+}
+
+output "igw_subnets" {
+  value = module.subnets.igw_subnets
+}
+
 #
 # resource "aws_route" "igw-route" {
 #   for_each               = local.subnets_with_igw
