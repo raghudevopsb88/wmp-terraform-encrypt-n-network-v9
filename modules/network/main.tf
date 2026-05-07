@@ -53,10 +53,10 @@ resource "aws_internet_gateway" "igw" {
 #   value = module.subnets
 # }
 
-output "test" {
-  #value = lookup(module.subnets.igw_subnets, "app", {  })
-  value = [ for i,j in module.subnets: join(",", i.igw_subnets) ]
-}
+# output "test" {
+#   #value = lookup(module.subnets.igw_subnets, "app", {  })
+#   value = [ for i,j in module.subnets: join(",", i.igw_subnets) ]
+# }
 
 # resource "aws_route" "igw-route" {
 #   count                  = length(concat(values(module.subnets.igw_route_tables)))
