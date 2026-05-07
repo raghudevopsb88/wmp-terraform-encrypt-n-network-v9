@@ -1,6 +1,6 @@
 module "network" {
   for_each = var.network
-  source   = "modules/network"
+  source   = "./modules/network"
 
   env               = var.env
   default_vpc_id    = var.default_vpc_id
