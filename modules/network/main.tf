@@ -57,7 +57,7 @@ resource "aws_internet_gateway" "igw" {
 # }
 
 resource "aws_route" "igw-route" {
-  for_each               = { for i,j in var.subnets: i => aws_subnet.main[i].id if var.subnets[i].id }
+  for_each               = { for i,j in values(var.subnets): i => aws_subnet.main[i].id if var.subnets[i].id }
   route_table_id         = aws_route_table.main[each.key].id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.igw.id
