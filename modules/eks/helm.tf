@@ -62,3 +62,14 @@ resource "helm_release" "file-beat" {
   ]
 }
 
+resource "helm_release" "traefik" {
+
+  depends_on = [null_resource.kube-config]
+
+  name       = "traefik"
+  repository = "https://traefik.github.io/charts"
+  chart      = "traefik"
+
+}
+
+
