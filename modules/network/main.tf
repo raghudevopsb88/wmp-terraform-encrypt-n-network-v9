@@ -140,7 +140,7 @@ resource "aws_route" "default-rt-add-peering" {
 
 resource "aws_route" "here-vpc-rt-add-peering" {
   count                     = length(concat(aws_route_table.public, aws_route_table.app, aws_route_table.db))
-  route_table_id            = concat(aws_route_table.public, aws_route_table.app, aws_route_table.db)[count.index]
+  route_table_id            = concat(aws_route_table.public.*.id, aws_route_table.app.*.id, aws_route_table.db.*.id)[count.index]
   destination_cidr_block    = var.default_vpc_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.main.id
 }
