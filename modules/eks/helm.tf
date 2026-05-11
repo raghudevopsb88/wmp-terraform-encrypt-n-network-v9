@@ -44,7 +44,7 @@ resource "helm_release" "argocd" {
   ]
 }
 
-resource "helm_release" "kube-stack" {
+resource "helm_release" "prometheus-stack" {
 
   depends_on = [null_resource.kube-config, helm_release.traefik]
 
