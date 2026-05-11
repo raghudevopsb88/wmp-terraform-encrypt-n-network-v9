@@ -26,6 +26,21 @@ resource "helm_release" "traefik" {
   repository = "https://traefik.github.io/charts"
   chart      = "traefik"
 
+  set = [
+    {
+      name  = "ports.web.http.redirections.entryPoint.to"
+      value = "websecure"
+    },
+    {
+      name  = "ports.web.http.redirections.entryPoint.scheme"
+      value = "https"
+    },
+    {
+      name  = "ports.web.http.redirections.entryPoint.permanent"
+      value = "true"
+    }
+  ]
+
 }
 
 resource "helm_release" "argocd" {
