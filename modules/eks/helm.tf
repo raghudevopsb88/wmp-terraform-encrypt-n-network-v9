@@ -25,38 +25,7 @@ resource "helm_release" "traefik" {
   name       = "traefik"
   repository = "https://traefik.github.io/charts"
   chart      = "traefik"
-
-  set = [
-    {
-      name  = "ports.web.http.redirections.entryPoint.to"
-      value = "websecure"
-    },
-    {
-      name  = "ports.web.http.redirections.entryPoint.scheme"
-      value = "https"
-    },
-    {
-      name  = "ports.web.http.redirections.entryPoint.permanent"
-      value = "true"
-    },
-    # ACM certificate ARN
-    {
-      name  = "service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-cert"
-      value = "arn:aws:acm:us-east-1:739561048503:certificate/357141e3-f378-4020-a8f5-b9d69a94316f"
-    },
-
-    # Enable TLS on 443
-    {
-      name  = "service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"
-      value = "443"
-    },
-
-    # Forward decrypted traffic to Traefik over HTTP
-    {
-      name  = "service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"
-      value = "http"
-    },
-  ]
+  values     = [file("${path.module}/traefik.yml")]
 
 }
 
