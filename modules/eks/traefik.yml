@@ -26,6 +26,12 @@ additionalArguments:
   - "--accesslog=true"
   - "--api.dashboard=true"
   - "--api.insecure=true"
+  # Trust NLB forwarded headers
+  - "--entrypoints.web.forwardedHeaders.insecure=true"
+  - "--entrypoints.websecure.forwardedHeaders.insecure=true"
+
+  # HTTP -> HTTPS redirect
   - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
   - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+
 
