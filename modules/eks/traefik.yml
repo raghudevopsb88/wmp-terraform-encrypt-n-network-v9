@@ -10,8 +10,6 @@ ports:
   web:
     port: 80
     exposedPort: 80
-    redirectTo:
-      port: websecure
 
   websecure:
     port: 8000
@@ -28,3 +26,6 @@ additionalArguments:
   - "--accesslog=true"
   - "--api.dashboard=true"
   - "--api.insecure=true"
+  - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+  - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+
